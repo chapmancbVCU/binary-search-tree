@@ -7,14 +7,27 @@
 export class ArrayHelper {
     private array: number[];
 
+    /**
+     * Constructor that accepts an array of numbers as a parameter.
+     * @param { number[] } array An array of numbers that we will use to build 
+     * our binary search tree.
+     */
     constructor(array: number[]) {
         this.array = array;
     }
 
+    /**
+     * Getter function for an array of numbers.
+     * @returns An array of numbers.
+     */
     getArray(): number[] {
         return this.array;
     }
 
+    /**
+     * Function that performs the insertionSort algorithm aganst an array of 
+     * numbers.
+     */
     insertionSort(): void {
         for (let i = 0; i < this.array.length; i++) {
             let next = this.array[i];
@@ -30,6 +43,11 @@ export class ArrayHelper {
         }
     }
 
+    /**
+     * A to string function that returns the an array in the following format:
+     * [1, 2, 3].
+     * @returns A formatted string containing the array.
+     */
     toString(): string {
         let result = '['
         for (let i = 0; i < this.array.length; i++) {
