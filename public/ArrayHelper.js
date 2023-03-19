@@ -8,9 +8,18 @@ exports.ArrayHelper = void 0;
  * @author Chad Chapman
  */
 class ArrayHelper {
+    /**
+     * Constructor that accepts an array of numbers as a parameter.
+     * @param { number[] } array An array of numbers that we will use to build
+     * our binary search tree.
+     */
     constructor(array) {
         this.array = array;
     }
+    /**
+     *
+     * @returns
+     */
     getArray() {
         return this.array;
     }
