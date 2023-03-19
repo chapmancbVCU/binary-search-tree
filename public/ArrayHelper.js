@@ -17,12 +17,16 @@ class ArrayHelper {
         this.array = array;
     }
     /**
-     *
-     * @returns
+     * Getter function for an array of numbers.
+     * @returns An array of numbers.
      */
     getArray() {
         return this.array;
     }
+    /**
+     * Function that performs the insertionSort algorithm aganst an array of
+     * numbers.
+     */
     insertionSort() {
         for (let i = 0; i < this.array.length; i++) {
             let next = this.array[i];
@@ -36,6 +40,11 @@ class ArrayHelper {
             this.array[j] = next;
         }
     }
+    /**
+     * A to string function that returns the an array in the following format:
+     * [1, 2, 3].
+     * @returns A formatted string containing the array.
+     */
     toString() {
         let result = '[';
         for (let i = 0; i < this.array.length; i++) {
