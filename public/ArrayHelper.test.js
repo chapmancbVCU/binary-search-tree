@@ -14,6 +14,15 @@ describe('#getArray', () => {
     })
 });
 
+describe('#insertionSort', () => {
+    test('Returns a sorted list', () => {
+        let helper = new ArrayHelper([3, 2, 1]);
+        helper.insertionSort();
+    
+        expect(helper.toString()).toBe('[1, 2, 3]');
+    });
+});
+
 describe('#toString', () => {
     let helper = new ArrayHelper([1, 2, 3]);
     let result = helper.toString();
