@@ -24,8 +24,10 @@ describe('#insertionSort', () => {
 });
 
 describe('#toString', () => {
-    let helper = new ArrayHelper([1, 2, 3]);
-    let result = helper.toString();
+    test('Returns a formatted string', () => {
+        let helper = new ArrayHelper([1, 2, 3]);
+        let result = helper.toString();
 
-    expect(result).toBe('[1, 2, 3]');
-})
+        expect(result).toBe('[1, 2, 3]');
+    });
+});
