@@ -13,11 +13,13 @@ export class BinarySearchTree {
             return null;
         }
 
-        console.log(`start: ${start}`);
-        console.log(`end: ${end}`);
+        // Get middle element and make it root.
         let mid = Math.round((start + end) / 2);
         let node = new BSTNode(sortedArray[mid]);
+
+        // Recursively construct left subtree and make it left child of root.
         node.left = this.buildBST(sortedArray, start, mid - 1)!;
+        // Recursively construct right subtree and make it right child of root.
         node.right = this.buildBST(sortedArray, mid + 1, end)!;
 
         return node;
@@ -44,7 +46,6 @@ class BSTNode {
 
     constructor(data: number) {
         this.data = data;
-        console.log(this.data);
         this.left = null!;
         this.right = null!;
     }
