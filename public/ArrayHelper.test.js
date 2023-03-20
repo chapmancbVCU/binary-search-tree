@@ -29,7 +29,7 @@ describe('#removeDuplicates', () => {
             let helper = new ArrayHelper([1, 2, 3, 3 ,5 , 3, 7, 8, 9, 7]);
             helper.insertionSort();
             helper.removeDuplicates();
-            expect(helper.toString()).toBe('[1, 2, 3, 5, 7, 8, 9, 7, 8, 9]');
+            expect(helper.toString()).toBe('[1, 2, 3, 5, 7, 8, 9]');
         });
     });
 
