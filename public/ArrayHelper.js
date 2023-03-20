@@ -40,6 +40,12 @@ class ArrayHelper {
             this.array[j] = next;
         }
     }
+    /**
+     * Removes all duplicates from array instance variable of the implicit
+     * parameter.
+     * @returns If array length is 0 or 1 we return undefined.  Otherwise we
+     * return void.
+     */
     removeDuplicates() {
         let arrayLength = this.array.length;
         if (arrayLength == 0 || arrayLength == 1) {

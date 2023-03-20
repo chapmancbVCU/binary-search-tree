@@ -43,7 +43,13 @@ export class ArrayHelper {
         }
     }
 
-    removeDuplicates() {
+    /**
+     * Removes all duplicates from array instance variable of the implicit 
+     * parameter.
+     * @returns If array length is 0 or 1 we return undefined.  Otherwise we 
+     * return void.
+     */
+    removeDuplicates(): undefined|void {
         let arrayLength = this.array.length;
         if (arrayLength == 0 || arrayLength == 1) {
             return;
