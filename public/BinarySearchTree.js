@@ -4,6 +4,13 @@ exports.BinarySearchTree = void 0;
 class BinarySearchTree {
     //sortedArray: number[];
     constructor() {
+        /**
+         * Prints a binary search tree to the command line.
+         * @param { BSTNode } node The root of the binary search tree.
+         * @param prefix
+         * @param isLeft
+         * @returns
+         */
         this.prettyPrint = (node, prefix = '', isLeft = true) => {
             if (node === null) {
                 return;
@@ -19,6 +26,13 @@ class BinarySearchTree {
         this.root = null;
         //this.sortedArray = null!;
     }
+    /**
+     * Builds a binary search tree from a sorted array of numbers.
+     * @param { number[] } sortedArray A sorted array of numbers.
+     * @param { number} start The start index of the sortedArray.
+     * @param { number }end The end index of the sortedArray.
+     * @returns The node of a binary search tree.
+     */
     buildBST(sortedArray, start, end) {
         // Base case
         if (start > end) {
@@ -32,6 +46,9 @@ class BinarySearchTree {
         // Recursively construct right subtree and make it right child of root.
         node.right = this.buildBST(sortedArray, mid + 1, end);
         return node;
+    }
+    getRootNode() {
+        return this.root;
     }
 }
 exports.BinarySearchTree = BinarySearchTree;
