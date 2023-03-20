@@ -41,32 +41,16 @@ class ArrayHelper {
         }
     }
     /**
-     * Removes all duplicates from array instance variable of the implicit
-     * parameter.
-     * @returns If array length is 0 or 1 we return undefined.  Otherwise we
-     * return void.
+     * Removes duplicats from this array.
      */
     removeDuplicates() {
-        let arrayLength = this.array.length;
-        if (arrayLength == 0 || arrayLength == 1) {
-            return;
-        }
-        let tempArray = new Array(arrayLength);
-        // Start traversing elements.
-        let j = 0;
-        for (let i = 0; i < arrayLength - 1; i++) {
-            /* If current element is not equal to next, store that current
-            element. */
-            if (this.array[i] != this.array[i + 1]) {
-                tempArray[j++] = this.array[i];
+        let output = new Array();
+        for (let item of this.array) {
+            if (!output.includes(item)) {
+                output.push(item);
             }
         }
-        // Store the last element if it is unique or not.
-        tempArray[j++] = this.array[arrayLength - 1];
-        // Modify the original array.
-        for (let i = 0; i < j; i++) {
-            this.array[i] = tempArray[i];
-        }
+        this.array = output;
     }
     /**
      * A to string function that returns the an array in the following format:
