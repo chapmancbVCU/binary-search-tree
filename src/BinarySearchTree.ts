@@ -1,10 +1,8 @@
 export class BinarySearchTree {
     private root: BSTNode;
-    //sortedArray: number[];
 
     constructor() {
         this.root = null!;
-        //this.sortedArray = null!;
     }
 
     /**
@@ -32,10 +30,15 @@ export class BinarySearchTree {
         return node;
     }
 
+    /**
+     * Getter function for the main root node of the binary search tree.  
+     * This does not include root nodes of any subtree.
+     * @returns The root of the binary search tree.
+     */
     getRootNode() {
         return this.root;
     }
-    
+
     /**
      * Prints a binary search tree to the command line.
      * @param { BSTNode } node The root of the binary search tree.

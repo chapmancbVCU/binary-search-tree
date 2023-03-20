@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BinarySearchTree = void 0;
 class BinarySearchTree {
-    //sortedArray: number[];
     constructor() {
         /**
          * Prints a binary search tree to the command line.
@@ -24,7 +23,6 @@ class BinarySearchTree {
             }
         };
         this.root = null;
-        //this.sortedArray = null!;
     }
     /**
      * Builds a binary search tree from a sorted array of numbers.
@@ -47,6 +45,11 @@ class BinarySearchTree {
         node.right = this.buildBST(sortedArray, mid + 1, end);
         return node;
     }
+    /**
+     * Getter function for the main root node of the binary search tree.
+     * This does not include root nodes of any subtree.
+     * @returns The root of the binary search tree.
+     */
     getRootNode() {
         return this.root;
     }
