@@ -37,15 +37,12 @@ class BinarySearchTree {
         if (start > end) {
             return null;
         }
-        let node;
         // Get middle element and make it root.
         const mid = Math.round((start + end) / 2);
+        let node = new BSTNode(sortedArray[mid]);
+        // We need to handle case when this.root is null.
         if (this.root == null) {
-            this.root = new BSTNode(sortedArray[mid]);
-            node = this.root;
-        }
-        else {
-            node = new BSTNode(sortedArray[mid]);
+            this.root = node;
         }
         // Recursively construct left subtree and make it left child of root.
         node.left = this.buildBST(sortedArray, start, mid - 1);
