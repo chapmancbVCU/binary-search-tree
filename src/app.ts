@@ -16,14 +16,15 @@ let root = bst.buildBST(sorter.getArray(), 0, sorter.getArray().length-1)!;
 console.log(bst.prettyPrint(root));
 
 bst.deleteNode(9);
-bst.deleteNode(4);
+bst.deleteNode(9);
 
 console.log(`${bst.prettyPrint(root)}`);
+/*bst.insert(69);
 bst.insert(69);
 console.log(`${bst.prettyPrint(root)}`);
 
 let foo = bst.search(bst.getRootNode(), 69);
-console.log(foo.data);
+console.log(foo.data);*/
 /*var array = [1,3,2,1,3,4,5,6,7,3,5,6,4,3]
 let output: number[] = new Array();
 
