@@ -18,6 +18,7 @@ console.log(bst.prettyPrint(root));
 bst.deleteNode(9);
 bst.deleteNode(9);
 console.log(`${bst.prettyPrint(root)}`);
+console.log(bst.toStringInorder(bst.getRootNode()));
 /*bst.insert(69);
 bst.insert(69);
 console.log(`${bst.prettyPrint(root)}`);
