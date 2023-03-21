@@ -177,6 +177,16 @@ class BinarySearchTree {
         }
         return this.search(root.left, data);
     }
+    toStringInorder(root) {
+        let s = '';
+        if (root == null) {
+            return '';
+        }
+        s += this.toStringInorder(root.left);
+        s += root.data;
+        s += this.toStringInorder(root.right);
+        return s;
+    }
 }
 exports.BinarySearchTree = BinarySearchTree;
 /**

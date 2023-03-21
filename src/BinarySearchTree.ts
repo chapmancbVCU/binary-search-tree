@@ -192,6 +192,19 @@ export class BinarySearchTree {
 
         return this.search(root.left, data);
     }
+
+    toStringInorder(root: BSTNode) {
+        let s = '';
+
+        if (root == null) {
+            return '';
+        }
+
+        s += this.toStringInorder(root.left);
+        s += root.data;
+        s += this.toStringInorder(root.right);
+        return s;
+    }
 }
 
 /**
