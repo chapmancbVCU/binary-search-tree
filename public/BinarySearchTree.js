@@ -56,7 +56,13 @@ class BinarySearchTree {
      * tree.
      */
     deleteNode(data) {
-        this.root = this.deleteNodeRecursively(this.root, data);
+        let testNode = this.search(this.root, data);
+        if (testNode == null) {
+            console.log('This value does not exist.  Nothing to do.');
+        }
+        else {
+            this.root = this.deleteNodeRecursively(this.root, data);
+        }
     }
     /**
      * Traverses the tree and removes the node that contains the value we
@@ -95,12 +101,19 @@ class BinarySearchTree {
         return root;
     }
     /**
-     * Calls the insertNodeRecursively function.
+     * Checks if value exists.  If it does we print out a message.  Otherwise,
+     * we insert the new value using the insertNodeRecursively function.
      * @param { number } data The value we want added to the binary search
      * tree.
      */
     insert(data) {
-        this.root = this.insertNodeRecursively(this.root, data);
+        let testNode = this.search(this.root, data);
+        if (testNode == null) {
+            this.root = this.insertNodeRecursively(this.root, data);
+        }
+        else {
+            console.log('This value already exists!');
+        }
     }
     /**
      * Traverses the tree and inserts the node that contains the value we
