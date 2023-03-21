@@ -145,6 +145,23 @@ class BinarySearchTree {
         }
         return minValue;
     }
+    /**
+     * Function that searches the binary search tree for a value that is
+     * provided as an explicit parameter.
+     * @param { BSTNode }root The root of the tree or subtree.
+     * @param { number} data The value we want to find in the binary search
+     * tree.
+     * @returns The node containing the value we want to find.
+     */
+    search(root, data) {
+        if (root == null || root.data == data) {
+            return root;
+        }
+        if (root.data < data) {
+            return this.search(root.right, data);
+        }
+        return this.search(root.left, data);
+    }
 }
 exports.BinarySearchTree = BinarySearchTree;
 /**
