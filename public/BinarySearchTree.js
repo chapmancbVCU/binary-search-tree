@@ -51,7 +51,9 @@ class BinarySearchTree {
         return node;
     }
     /**
-     * Calls the deleteNodeRecursively function.
+     * Checks if value does not exist in the binary search tree.  If it does
+     * not then we print a message.  Otherwise we delete the value with the
+     * deleteNodeRecursively function.
      * @param { number } data The value we want removed from the binary search
      * tree.
      */
