@@ -18,16 +18,57 @@ export class BinarySearchTree {
             return null;
         }
 
+        let node;
         // Get middle element and make it root.
-        let mid = Math.round((start + end) / 2);
-        let node = new BSTNode(sortedArray[mid]);
-
+        const mid = Math.round((start + end) / 2);
+        if (this.root == null)  {
+            this.root = new BSTNode(sortedArray[mid]);
+            node = this.root;
+        } else {
+            node = new BSTNode(sortedArray[mid]);
+        }
+        
         // Recursively construct left subtree and make it left child of root.
         node.left = this.buildBST(sortedArray, start, mid - 1)!;
         // Recursively construct right subtree and make it right child of root.
         node.right = this.buildBST(sortedArray, mid + 1, end)!;
 
         return node;
+    }
+
+    deleteNode(key: number) {
+        this.root = this.deleteNodeRecursively(this.root, key);
+    }
+
+    deleteNodeRecursively(root: BSTNode, data: number) {
+        // Base case: return root if treee is empty.
+        if(root == null) {
+            return root;
+        }
+        
+        // Otherwise, recursively search tree for node with key.
+        if (data < root.data) {
+            root.left = this.deleteNodeRecursively(root.left, data);
+        } else if (data > root.data) {
+            root.right = this.deleteNodeRecursively(root.right, data);
+        } else {
+            // If key = root.data then delete key.
+            
+            // Node with only one child or no child.
+            if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            }
+
+            /* When node has not children we get inorder successor (smallest 
+               in right subtree). */
+            root.data = this.minimumValue(root.right);
+
+            // Delete the inorder sucessor.
+            root.right = this.deleteNodeRecursively(root.right, root.data);
+        }
+        return root;
     }
 
     /**
@@ -39,6 +80,14 @@ export class BinarySearchTree {
         return this.root;
     }
 
+    minimumValue(root: BSTNode) {
+        let minValue = root.data;
+        while(root.left != null) {
+            minValue = root.left.data;
+            root = root.left;
+        }
+        return minValue;
+    }
     /**
      * Prints a binary search tree to the command line.
      * @param { BSTNode } node The root of the binary search tree.
