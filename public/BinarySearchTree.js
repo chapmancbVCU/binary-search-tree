@@ -8,7 +8,8 @@ class BinarySearchTree {
          * @param { BSTNode } node The root of the binary search tree.
          * @param prefix
          * @param isLeft
-         * @returns
+         * @returns A print out of a node's value and position in binary search
+         * tree.
          */
         this.prettyPrint = (node, prefix = '', isLeft = true) => {
             if (node === null) {
@@ -55,7 +56,17 @@ class BinarySearchTree {
     }
 }
 exports.BinarySearchTree = BinarySearchTree;
+/**
+ * @class The node element in a binary search tree.
+ * @author Chad Chapman
+ */
 class BSTNode {
+    /**
+     * Sets value for data instance variables and sets left and right nodes
+     * to null.
+     * @param { number } data The key data value for a node in the binary
+     * search tree.
+     */
     constructor(data) {
         this.data = data;
         this.left = null;
