@@ -108,7 +108,7 @@ class BinarySearchTree {
      * @param { number } data The value we want added to the binary search
      * tree.
      */
-    insert(data) {
+    insertNode(data) {
         let testNode = this.search(this.root, data);
         if (testNode == null) {
             this.root = this.insertNodeRecursively(this.root, data);
