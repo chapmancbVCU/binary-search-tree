@@ -16,7 +16,8 @@ let bst = new BinarySearchTree_1.BinarySearchTree();
 let root = bst.buildBST(sorter.getArray(), 0, sorter.getArray().length - 1);
 console.log(bst.prettyPrint(root));
 bst.deleteNode(9);
-bst.deleteNode(1);
+bst.deleteNode(4);
+bst.deleteNode(6);
 console.log(`${bst.prettyPrint(root)}`);
 /*var array = [1,3,2,1,3,4,5,6,7,3,5,6,4,3]
 let output: number[] = new Array();
