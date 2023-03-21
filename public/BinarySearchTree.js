@@ -50,9 +50,21 @@ class BinarySearchTree {
         node.right = this.buildBST(sortedArray, mid + 1, end);
         return node;
     }
+    /**
+     * Calls the deleteNodeRecursively function.
+     * @param { number } key The value we want removed from the binary search
+     * tree.
+     */
     deleteNode(key) {
         this.root = this.deleteNodeRecursively(this.root, key);
     }
+    /**
+     * Traverses the tree and removes the node that contains the value we
+     * want to delete from the binary search tree.
+     * @param { BSTNode} root The root of the tree or subtree.
+     * @param { number } data The value we want to remove.
+     * @returns The root of the tree or subtree.
+     */
     deleteNodeRecursively(root, data) {
         // Base case: return root if treee is empty.
         if (root == null) {
@@ -74,7 +86,7 @@ class BinarySearchTree {
             else if (root.right == null) {
                 return root.left;
             }
-            /* When node has not children we get inorder successor (smallest
+            /* When node has no children we get inorder successor (smallest
                in right subtree). */
             root.data = this.minimumValue(root.right);
             // Delete the inorder sucessor.
@@ -90,6 +102,11 @@ class BinarySearchTree {
     getRootNode() {
         return this.root;
     }
+    /**
+     * Returns value contained in left child of root.
+     * @param { BSTNode } root The root of the tree or subtree.
+     * @returns The value contained in the node we removed.
+     */
     minimumValue(root) {
         let minValue = root.data;
         while (root.left != null) {

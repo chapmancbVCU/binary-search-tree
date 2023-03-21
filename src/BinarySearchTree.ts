@@ -35,11 +35,23 @@ export class BinarySearchTree {
         return node;
     }
 
-    deleteNode(key: number) {
+    /**
+     * Calls the deleteNodeRecursively function.
+     * @param { number } key The value we want removed from the binary search 
+     * tree. 
+     */
+    deleteNode(key: number): void {
         this.root = this.deleteNodeRecursively(this.root, key);
     }
 
-    deleteNodeRecursively(root: BSTNode, data: number) {
+    /**
+     * Traverses the tree and removes the node that contains the value we  
+     * want to delete from the binary search tree.
+     * @param { BSTNode} root The root of the tree or subtree. 
+     * @param { number } data The value we want to remove.
+     * @returns The root of the tree or subtree.
+     */
+    deleteNodeRecursively(root: BSTNode, data: number): BSTNode {
         // Base case: return root if treee is empty.
         if(root == null) {
             return root;
@@ -60,7 +72,7 @@ export class BinarySearchTree {
                 return root.left;
             }
 
-            /* When node has not children we get inorder successor (smallest 
+            /* When node has no children we get inorder successor (smallest 
                in right subtree). */
             root.data = this.minimumValue(root.right);
 
@@ -75,11 +87,16 @@ export class BinarySearchTree {
      * This does not include root nodes of any subtree.
      * @returns The root of the binary search tree.
      */
-    getRootNode() {
+    getRootNode(): BSTNode {
         return this.root;
     }
 
-    minimumValue(root: BSTNode) {
+    /**
+     * Returns value contained in left child of root.
+     * @param { BSTNode } root The root of the tree or subtree. 
+     * @returns The value contained in the node we removed.
+     */
+    minimumValue(root: BSTNode): number {
         let minValue = root.data;
         while(root.left != null) {
             minValue = root.left.data;
@@ -87,6 +104,7 @@ export class BinarySearchTree {
         }
         return minValue;
     }
+
     /**
      * Prints a binary search tree to the command line.
      * @param { BSTNode } node The root of the binary search tree.
@@ -95,7 +113,7 @@ export class BinarySearchTree {
      * @returns A print out of a node's value and position in binary search 
      * tree.
      */
-    prettyPrint = (node: BSTNode, prefix = '', isLeft = true) => {
+    prettyPrint = (node: BSTNode, prefix = '', isLeft = true): void|undefined => {
         if (node === null) {
            return;
         }
