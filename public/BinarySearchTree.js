@@ -52,11 +52,11 @@ class BinarySearchTree {
     }
     /**
      * Calls the deleteNodeRecursively function.
-     * @param { number } key The value we want removed from the binary search
+     * @param { number } data The value we want removed from the binary search
      * tree.
      */
-    deleteNode(key) {
-        this.root = this.deleteNodeRecursively(this.root, key);
+    deleteNode(data) {
+        this.root = this.deleteNodeRecursively(this.root, data);
     }
     /**
      * Traverses the tree and removes the node that contains the value we
@@ -92,6 +92,36 @@ class BinarySearchTree {
             // Delete the inorder sucessor.
             root.right = this.deleteNodeRecursively(root.right, root.data);
         }
+        return root;
+    }
+    /**
+     * Calls the insertNodeRecursively function.
+     * @param { number } data The value we want added to the binary search
+     * tree.
+     */
+    insert(data) {
+        this.root = this.insertNodeRecursively(this.root, data);
+    }
+    /**
+     * Traverses the tree and inserts the node that contains the value we
+     * want to add to the binary search tree.
+     * @param { BSTNode} root The root of the tree or subtree.
+     * @param { number } data The value we want to add.
+     * @returns The root of the tree or subtree.
+     */
+    insertNodeRecursively(root, data) {
+        // Returns new node if key is empty.
+        if (root == null) {
+            root = new BSTNode(data);
+            // Otherwise recursively travers the tree.
+        }
+        else if (data < root.data) {
+            root.left = this.insertNodeRecursively(root.left, data);
+        }
+        else if (data > root.data) {
+            root.right = this.insertNodeRecursively(root.right, data);
+        }
+        // Return unchanged node pointer.
         return root;
     }
     /**

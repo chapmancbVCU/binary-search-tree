@@ -37,11 +37,11 @@ export class BinarySearchTree {
 
     /**
      * Calls the deleteNodeRecursively function.
-     * @param { number } key The value we want removed from the binary search 
+     * @param { number } data The value we want removed from the binary search 
      * tree. 
      */
-    deleteNode(key: number): void {
-        this.root = this.deleteNodeRecursively(this.root, key);
+    deleteNode(data: number): void {
+        this.root = this.deleteNodeRecursively(this.root, data);
     }
 
     /**
@@ -83,6 +83,38 @@ export class BinarySearchTree {
     }
 
     /**
+     * Calls the insertNodeRecursively function.
+     * @param { number } data The value we want added to the binary search 
+     * tree. 
+     */
+    insert(data: number): void {
+        this.root = this.insertNodeRecursively(this.root, data);
+    }
+
+    /**
+     * Traverses the tree and inserts the node that contains the value we  
+     * want to add to the binary search tree.
+     * @param { BSTNode} root The root of the tree or subtree. 
+     * @param { number } data The value we want to add.
+     * @returns The root of the tree or subtree.
+     */
+    insertNodeRecursively(root: BSTNode, data: number): BSTNode {
+        // Returns new node if key is empty.
+        if (root == null) {
+            root = new BSTNode(data);
+        
+        // Otherwise recursively travers the tree.
+        } else if (data < root.data) {
+            root.left = this.insertNodeRecursively(root.left, data);
+        } else if (data > root.data) {
+            root.right = this.insertNodeRecursively(root.right, data);
+        }
+
+        // Return unchanged node pointer.
+        return root;
+    }
+
+    /**
      * Getter function for the main root node of the binary search tree.  
      * This does not include root nodes of any subtree.
      * @returns The root of the binary search tree.
@@ -115,7 +147,7 @@ export class BinarySearchTree {
      */
     prettyPrint = (node: BSTNode, prefix = '', isLeft = true): void|undefined => {
         if (node === null) {
-           return;
+            return;
         }
         if (node.right !== null) {
             this.prettyPrint(node.right, `${prefix}${isLeft ? '│   ' : '    '}`, false);
@@ -124,7 +156,7 @@ export class BinarySearchTree {
         if (node.left !== null) {
             this.prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
         }
-      }
+    }
 }
 
 /**
