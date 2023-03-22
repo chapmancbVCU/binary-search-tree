@@ -148,6 +148,40 @@ class BinarySearchTree {
         return this.root;
     }
     /**
+     * Returns the height of the binary search tree.
+     * @param { BSTNode} root The root of the binary search tree.
+     * @returns The value representing the height of the binary search tree.
+     */
+    height(root) {
+        // Initialize variable to count height of the tree.
+        let height = 0;
+        let queue = [];
+        // Push first level element along with null.
+        queue.push(root);
+        queue.push(null);
+        while (queue.length > 0) {
+            let temp = queue.shift();
+            // When null is encountered we increment.
+            if (temp == null) {
+                height += 1;
+            }
+            // If null not encounted we keep searching
+            if (temp != null) {
+                if (temp.left) {
+                    queue.push(temp.left);
+                }
+                if (temp.right) {
+                    queue.push(temp.right);
+                }
+            }
+            // If queue still have elements left, puts null again to queue.
+            else if (queue.length > 0) {
+                queue.push(null);
+            }
+        }
+        return height;
+    }
+    /**
      * Returns value contained in left child of root.
      * @param { BSTNode } root The root of the tree or subtree.
      * @returns The value contained in the node we removed.
