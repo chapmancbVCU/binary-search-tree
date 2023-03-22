@@ -60,7 +60,7 @@ class BinarySearchTree {
     deleteNode(data) {
         let testNode = this.search(this.root, data);
         if (testNode == null) {
-            console.log('This value does not exist.  Nothing to do.');
+            console.log(`The value, ${4}, does not exist.`);
         }
         else {
             this.root = this.deleteNodeRecursively(this.root, data);
@@ -114,7 +114,7 @@ class BinarySearchTree {
             this.root = this.insertNodeRecursively(this.root, data);
         }
         else {
-            console.log('This value already exists!');
+            console.log(`The value, ${data}, already exists.`);
         }
     }
     /**
@@ -177,6 +177,12 @@ class BinarySearchTree {
         }
         return this.search(root.left, data);
     }
+    /**
+     * Returns a string representing inorder traversal of binary search tree.
+     * @param {BSTNode} root The node of the tree or subtree.
+     * @returns A string representation of inorder traversal of binary search
+     * tree.
+     */
     toStringInorder(root) {
         let s = '';
         if (root == null) {
