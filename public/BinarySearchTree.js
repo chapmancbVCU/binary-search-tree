@@ -103,6 +103,30 @@ class BinarySearchTree {
         return root;
     }
     /**
+     * Determines the depth of the binary search tree and returns this value
+     * as a number.  The depth is the longest path from the root node to the
+     * farthest leaf node.
+     * @param { BSTNode } root The root of the tree or subtree.
+     * @returns The depth of the binary search tree.
+     */
+    depth(root) {
+        if (root == null) {
+            return 0;
+        }
+        else {
+            // Compute depth of each subtree.
+            let leftDepth = this.depth(root.left);
+            let rightDepth = this.depth(root.right);
+            // Use the larger value.
+            if (leftDepth > rightDepth) {
+                return leftDepth + 1;
+            }
+            else {
+                return rightDepth + 1;
+            }
+        }
+    }
+    /**
      * Checks if value exists.  If it does we print out a message.  Otherwise,
      * we insert the new value using the insertNodeRecursively function.
      * @param { number } data The value we want added to the binary search
