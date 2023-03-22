@@ -164,6 +164,37 @@ class BinarySearchTree {
         return root;
     }
     /**
+     * Determines if the tree is balanced.
+     * @param {BSTNode } root The root of the tree or subtree.
+     * @returns True if balanced, otherwise false.
+     */
+    isBalanced(root) {
+        if (root == null) {
+            return true;
+        }
+        // Determine height of left and right subtree.
+        let leftHeight = this.isBalancedHelper(root.left);
+        let rightHeight = this.isBalancedHelper(root.right);
+        if (Math.abs(leftHeight - rightHeight) <= 1 &&
+            this.isBalanced(root.left) == true &&
+            this.isBalanced(root.right) == true) {
+            return true;
+        }
+        // If we get here then tree is not height-balanced.
+        return false;
+    }
+    /**
+     * Helper function to assist isBalanced by determining height.
+     * @param {BSTNode} root
+     * @returns The hight of the tree.
+     */
+    isBalancedHelper(root) {
+        if (root == null) {
+            return 0;
+        }
+        return Math.max(this.isBalancedHelper(root.left), this.isBalancedHelper(root.right)) + 1;
+    }
+    /**
      * Getter function for the main root node of the binary search tree.
      * This does not include root nodes of any subtree.
      * @returns The root of the binary search tree.
