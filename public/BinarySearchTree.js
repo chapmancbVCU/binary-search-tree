@@ -193,6 +193,38 @@ class BinarySearchTree {
         s += this.toStringInorder(root.right);
         return s;
     }
+    /**
+     * Returns a string representing postorder traversal of binary search tree.
+     * @param {BSTNode} root The node of the tree or subtree.
+     * @returns A string representation of postorder traversal of binary search
+     * tree.
+     */
+    toStringPostorder(root) {
+        let s = '';
+        if (root == null) {
+            return '';
+        }
+        s += this.toStringPostorder(root.left);
+        s += this.toStringPostorder(root.right);
+        s += root.data;
+        return s;
+    }
+    /**
+     * Returns a string representing preorder traversal of binary search tree.
+     * @param {BSTNode} root The node of the tree or subtree.
+     * @returns A string representation of preorder traversal of binary search
+     * tree.
+     */
+    toStringPreorder(root) {
+        let s = '';
+        if (root == null) {
+            return '';
+        }
+        s += root.data;
+        s += this.toStringPreorder(root.left);
+        s += this.toStringPreorder(root.right);
+        return s;
+    }
 }
 exports.BinarySearchTree = BinarySearchTree;
 /**
