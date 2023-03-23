@@ -251,13 +251,16 @@ class BinarySearchTree {
         }
         return minValue;
     }
+    /**
+     * Rebalances a binary search tree by creating an array using the values
+     * that are stored in it.
+     * @param {BSTNode } root The root of the tree.
+     * @returns The root of the new binary search tree.
+     */
     rebalanceBST(root) {
         // Store nodes in sorted order.
         let nodes = new Array();
         this.storeBSTNodes(root, this.array.getArray());
-        for (let i = 0; i < this.array.getArray().length; i++) {
-            console.log(this.array.getArray()[i]);
-        }
         // Construct BST from nodes array.
         let n = this.array.getArray().length;
         return this.buildBST(this.array.getArray(), 0, n - 1);
@@ -279,6 +282,14 @@ class BinarySearchTree {
         }
         return this.search(root.left, data);
     }
+    /**
+     * Stores the values of each node in an array in inorder fashion.
+     * @param { BSTNodes } root The root of the tree or subtree.
+     * @param { number[] } nodes The array containing numbers from the original
+     * binary search tree.
+     * @returns The array containing numbers from the original binary search
+     * tree.
+     */
     storeBSTNodes(root, nodes) {
         // Base case.
         if (root == null) {
