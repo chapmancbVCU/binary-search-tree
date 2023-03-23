@@ -1,8 +1,11 @@
+import { ArrayHelper } from "./ArrayHelper";
+
 export class BinarySearchTree {
     private root: BSTNode;
-
+    private array: ArrayHelper;
     constructor() {
         this.root = null!;
+        this.array = new ArrayHelper([]);
     }
 
     /**
@@ -277,6 +280,18 @@ export class BinarySearchTree {
         }
     }
 
+    rebalanceBST(root: BSTNode) {
+        // Store nodes in sorted order.
+        let nodes: number[] = new Array()
+        this.storeBSTNodes(root, this.array.getArray())!;
+        for(let i = 0; i < this.array.getArray().length; i++) {
+            console.log(this.array.getArray()[i]);
+        }
+        // Construct BST from nodes array.
+        let n = this.array.getArray().length!;
+        return this.buildBST(this.array.getArray(), 0, n-1);
+    }
+
     /**
      * Function that searches the binary search tree for a value that is 
      * provided as an explicit parameter.
@@ -295,6 +310,20 @@ export class BinarySearchTree {
         }
 
         return this.search(root.left, data);
+    }
+
+    storeBSTNodes(root: BSTNode, nodes: number[]) {
+        // Base case.
+        if (root == null) {
+            return;
+        }
+
+        // Store nodes in order.
+        this.storeBSTNodes(root.left, nodes);
+        nodes.push(root.data);
+        this.storeBSTNodes(root.right, nodes);
+
+        return nodes;
     }
 
     /**

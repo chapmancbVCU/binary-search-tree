@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BinarySearchTree = void 0;
+const ArrayHelper_1 = require("./ArrayHelper");
 class BinarySearchTree {
     constructor() {
         /**
@@ -24,6 +25,7 @@ class BinarySearchTree {
             }
         };
         this.root = null;
+        this.array = new ArrayHelper_1.ArrayHelper([]);
     }
     /**
      * Builds a binary search tree from a sorted array of numbers.
@@ -249,6 +251,17 @@ class BinarySearchTree {
         }
         return minValue;
     }
+    rebalanceBST(root) {
+        // Store nodes in sorted order.
+        let nodes = new Array();
+        this.storeBSTNodes(root, this.array.getArray());
+        for (let i = 0; i < this.array.getArray().length; i++) {
+            console.log(this.array.getArray()[i]);
+        }
+        // Construct BST from nodes array.
+        let n = this.array.getArray().length;
+        return this.buildBST(this.array.getArray(), 0, n - 1);
+    }
     /**
      * Function that searches the binary search tree for a value that is
      * provided as an explicit parameter.
@@ -265,6 +278,17 @@ class BinarySearchTree {
             return this.search(root.right, data);
         }
         return this.search(root.left, data);
+    }
+    storeBSTNodes(root, nodes) {
+        // Base case.
+        if (root == null) {
+            return;
+        }
+        // Store nodes in order.
+        this.storeBSTNodes(root.left, nodes);
+        nodes.push(root.data);
+        this.storeBSTNodes(root.right, nodes);
+        return nodes;
     }
     /**
      * Returns a string representing inorder traversal of binary search tree.
